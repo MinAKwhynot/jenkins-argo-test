@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microsvc
+  labels:
+    app: microsvc
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: microsvc
+  template:
+    metadata:
+      labels:
+        app: microsvc
+    spec:
+      containers:
+      - name: microsvc
+        image: kkmmin/goapp:3.0
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "125m"
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microsvc
+  labels:
+    app: microsvc
+    tier: service
+spec:
+  type: NodePort
+  ports:
+  - port: 8110
+  selector:
+    app: microsvc
+
