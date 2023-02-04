@@ -25,7 +25,7 @@ spec:
             memory: "128Mi"
             cpu: "250m"
         ports:
-        - containerPort: 8080
+        - containerPort: 8110
         env:
         - name: PORT
           value: "8000"
