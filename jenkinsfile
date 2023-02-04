@@ -30,7 +30,7 @@ podTemplate(label: 'docker-build',
         stage('Build'){
             container('docker'){
                 script {
-                    appImage = docker.build("kkimmin/hello-world")
+                    appImage = docker.build("kkimmin/jenkins-argo")
                 }
             }
         }
