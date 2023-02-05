@@ -1,47 +1,32 @@
-podTemplate(label: 'docker-build', 
-  containers: [
-    containerTemplate(
-      name: 'git',
-      image: 'alpine/git',
-      command: 'cat',
-      ttyEnabled: true
-    ),
-    containerTemplate(
-      name: 'docker',
-      image: 'docker',
-      command: 'cat',
-      ttyEnabled: true
-    ),
-  ],
-  volumes: [ 
-    hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'), 
-  ]
-) {
-    node('docker-build') {
-        def dockerHubCred = "dockerhub-cred"
-        def appImage
-        
+pipeline {
+    agent any
+    stages {
         stage('Checkout'){
             container('git'){
                 checkout scm
+                    echo 'checkout'
+                }
             }
         }
-        
+
         stage('Build'){
             container('docker'){
                 script {
                     appImage = docker.build("kkimmin/git-test:$BUILD_NUMBER")
+                    echo 'build!!'
+                    sh 'sleep 5'
                 }
             }
         }
-        
+
         stage('Test'){
             container('docker'){
                 script {
                     appImage.inside {
                         //sh 'npm install'
                         //sh 'npm test'
-                    }
+                    echo 'test!!'
+                    sh 'sleep 5'
                 }
             }
         }
@@ -52,7 +37,8 @@ podTemplate(label: 'docker-build',
                     docker.withRegistry('https://registry.hub.docker.com', dockerHubCred){
                         appImage.push("${env.BUILD_NUMBER}")
                         appImage.push("latest")
-                    }
+                        echo 'push!!'
+                        sh 'sleep 5'
                 }
             }
         }
@@ -81,5 +67,6 @@ podTemplate(label: 'docker-build',
                 }
             }
         }
-    } 
+    }
 }
+
