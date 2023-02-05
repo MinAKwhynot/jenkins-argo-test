@@ -2,30 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: git-test
-  labels:
-    app: git-test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: git-test
+      run: git-test
   template:
     metadata:
       labels:
-        app: git-test
+        run: git-test
     spec:
       containers:
-      - name: git-test
-        image: kkimmin/git-test:25
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "125m"
-          limits:
-            memory: "128Mi"
-            cpu: "250m"
+      - image: kkimmin/git-test:25
+        name: git-test
         ports:
-        - containerPort: 8110
-        env:
-        - name: PORT
-          value: "8000"
+        - containerPort: 80
