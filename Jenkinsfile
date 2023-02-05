@@ -72,9 +72,9 @@ podTemplate(label: 'docker-build',
                         #!/usr/bin/env bash
                         set +x
                         export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
-                        git config --global user.email "cure4itches@gmail.com"
+                        git config --global user.email "aji7day@gmail.com"
                         git checkout main
-                        cd env/dev && kustomize edit set image arm7tdmi/node-hello-world:${BUILD_NUMBER}
+                        cd env/dev && kustomize edit set image kkimmin/git-test:${BUILD_NUMBER}
                         git commit -a -m "updated the image tag"
                         git push
                     """)
