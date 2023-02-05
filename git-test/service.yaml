@@ -2,12 +2,10 @@ apiVersion: v1
 kind: Service
 metadata:
   name: git-test
-  labels:
-    app: git-test
-    tier: service
 spec:
-  type: NodePort
   ports:
-  - port: 8110
+  - port: 80
+    protocol: TCP
+    targetPort: 80
   selector:
-    app: git-test
+    run: git-test
