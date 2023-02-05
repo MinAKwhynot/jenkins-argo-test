@@ -18,7 +18,7 @@ podTemplate(label: 'docker-build',
   ]
 ) {
     node('docker-build') {
-        def dockerHubCred = dockerhub_cred
+        def dockerHubCred = dockerhub-cred
         def appImage
         
         stage('Checkout'){
@@ -30,7 +30,7 @@ podTemplate(label: 'docker-build',
         stage('Build'){
             container('docker'){
                 script {
-                    appImage = docker.build("kkimmin/git-test")
+                    appImage = docker.build("kkimmin/git-test:$BUILD_NUMBER")
                 }
             }
         }
