@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: git-test
-        image: kkimmin/git-test:latest
+        image: "kkimmin/git-test:latest"
         resources:
           requests:
             memory: "64Mi"
