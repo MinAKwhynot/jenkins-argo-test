@@ -1,0 +1,28 @@
+form.form-inline(action="/post", method="POST")
+    label.sr-only(for="name") Name
+    .input-group.mb-2.mr-sm-2
+        .input-group-prepend
+            .input-group-text 사원 ID
+        input#name.form-control(type="text", name="name", required="")
+    label.sr-only(for="message") Message
+    .input-group.mb-2.mr-sm-2
+        .input-group-prepend
+            .input-group-text 이름
+        input#message.form-control(type="text", name="message", required="")
+    label.sr-only(for="date") Date
+    .input-group.mb-2.mr-sm-2
+        .input-group-prepend
+            .input-group-text Date
+        input#date.form-control(type="date", name="date", required="")
+    label.sr-only(for="data") menu
+    .input-group.mb-2.mr-sm-2
+        .input-group-prepend
+            .input-group-text menu
+        input#date.form-control(type="text", name="menu", requried="")
+    label.sr-only(for="data") home
+    .input-group.mb-2.mr-sm-2
+         .input-group-prepend
+             .input-group-text home
+         input#message.form-control(type="text", name="home", required="")
+
+    button.btn.btn-primary.mb-2(type="submit") 예약

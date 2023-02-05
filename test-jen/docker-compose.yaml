@@ -1,0 +1,32 @@
+version: '3.6'
+services:
+  mongodb:
+    image: mongo:4
+    ports:
+    - "17017:27017"
+    networks:
+    - devapp-net
+    restart: always
+
+  backend:
+    image: kfljoiweng/ghwnssla:1.1
+    networks:
+    - devapp-net
+    restart: always
+    environment:
+      PORT: 8000
+      GUESTBOOK_DB_ADDR: mongodb:27017
+
+  frontend:
+    image: simmai/front:2.0
+    ports:
+    - "3000:8000"
+    networks:
+    - devapp-net
+    restart: always
+    environment:
+      PORT: 8000
+      GUESTBOOK_API_ADDR: backend:8000
+
+networks:
+  devapp-net: {}

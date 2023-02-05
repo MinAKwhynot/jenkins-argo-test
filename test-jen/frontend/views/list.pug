@@ -1,0 +1,17 @@
+if messages.length > 0
+    for msg in messages
+        .card.my-3.col-12
+            .card-body
+                h5.card-title #{msg.name}
+                h6.card-subtitle.mb-2.text-muted  #{msg.timeAgo} 
+                br
+                p.card-text #{msg.body}
+                br
+                p.card-text #{msg.date}
+                br
+                p.card-text #{msg.menu}
+                br
+                p.card-text #{msg.home}
+else
+    p.alert.alert-info(role='alert')
+        | There is currently no data in the guestbook.
