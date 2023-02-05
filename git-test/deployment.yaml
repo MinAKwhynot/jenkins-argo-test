@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: microsvc
+        app: git-test
     spec:
       containers:
       - name: git-test
