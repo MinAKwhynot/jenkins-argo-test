@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: microsvc
+  name: git-test
   labels:
-    app: microsvc
+    app: git-test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: microsvc
+      app: git-test
   template:
     metadata:
       labels:
         app: microsvc
     spec:
       containers:
-      - name: microsvc
-        image: kkimmin/goapp:3.0
+      - name: git-test
+        image: kkimmin/git-test:latest
         resources:
           requests:
             memory: "64Mi"
