@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microsvc
+  labels:
+    app: microsvc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microsvc
+  template:
+    metadata:
+      labels:
+        app: microsvc
+    spec:
+      containers:
+      - name: microsvc
+        image: kkimmin/goapp:3.0
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "125m"
+          limits:
+            memory: "128Mi"
+            cpu: "250m"
+        ports:
+        - containerPort: 8110
+        env:
+        - name: PORT
+          value: "8000"
