@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: microsvc
+  name: git-test
   labels:
-    app: microsvc
+    app: git-test
     tier: service
 spec:
   type: NodePort
   ports:
   - port: 8110
   selector:
-    app: microsvc
+    app: git-test
