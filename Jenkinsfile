@@ -12,15 +12,15 @@
              app.push("latest")
          }
      }
-    stage('Git Push'){
-    steps{
-        script{
-            GIT_CREDS = credentials(<git creds id>)
-            sh '''
-                git add .
-                git commit -m "push to git"
-                git push https://${GIT_CREDS_USR}:${GIT_CREDS_PSW}@bitbucket.org/jenkins-argo.git master
-            '''
-        }
-    }
-}
+      stage('Git Push'){
+      steps{
+          script{
+              GIT_CREDS = credentials(<git creds id>)
+              sh '''
+                  git add .
+                  git commit -m "push to git"
+                  git push https://${GIT_CREDS_USR}:${GIT_CREDS_PSW}@bitbucket.org/jenkins-argo.git master
+              '''
+          }
+      }
+  }
