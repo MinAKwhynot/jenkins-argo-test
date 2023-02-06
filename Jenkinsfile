@@ -24,7 +24,7 @@
             sshagent(credentials: ['jenkins-ssh-private1']){
                 sh("""
                     #!/usr/bin/env bash
-                    set +x
+                    //set +x
                     export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no
 		    git config --global user.email "aji7day@gmail.com"
                     git checkout master
