@@ -12,15 +12,7 @@ node {
         }
     }
      stage('Deploy'){
-           checkout([$class: 'GitSCM',
-                   branches: [[name: '*/master' ]],
-                   extensions: scm.extensions,
-                   userRemoteConfigs: [[
-                       url: 'https://github.com/MinAKwhynot/jenkins-argo.git',
-                       credentialsId: 'jenkins-ssh-private',
-                   ]]
-           ])
-           sshagent(credentials: ['jenkins-ssh-private']){
+           withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-ssh-private', keyFileVariable: '', passphraseVariable: 'user', usernameVariable: 'pass')]) {
                sh("""
                    #!/usr/bin/env bash
 		   [ -d ~/.ssh ] || mkdir ~/.ssh && chmod 0700 ~/.ssh
