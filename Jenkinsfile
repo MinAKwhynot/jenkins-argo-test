@@ -18,10 +18,10 @@
                     extensions: scm.extensions,
                     userRemoteConfigs: [[
                         url: 'https://github.com/MinAKwhynot/jenkins-argo.git',
-                        credentialsId: 'jenkins-ssh-private',
+                        credentialsId: 'jenkins-ssh-private2',
                     ]]
             ])
-            sshagent(credentials: ['jenkins-ssh-private']){
+            sshagent(credentials: ['jenkins-ssh-private2']){
                 sh("""
                     #!/usr/bin/env bash
                     set +x
