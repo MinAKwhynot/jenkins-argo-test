@@ -13,7 +13,7 @@ spec:
         run: git-test
     spec:
       containers:
-      - image: kkimmin/git-test:37
+      - image: kkimmin/git-test:latest
         name: git-test
         ports:
         - containerPort: 80
