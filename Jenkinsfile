@@ -25,7 +25,7 @@ node {
                    #!/usr/bin/env bash
 		   cd /home/kevin/LABs/project-test01
                    set +x
-                   export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no
+                   export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
 		   git config --global user.email "aji7day@gmail.com"
                    git checkout master
                    cd env/dev && kustomize edit set image kkimmin/git-test:${BUILD_NUMBER}
