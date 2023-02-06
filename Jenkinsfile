@@ -12,27 +12,15 @@
              app.push("latest")
          }
      }
-      stage('Deploy'){
-            checkout([$class: 'GitSCM',
-                    branches: [[name: '*/master' ]],
-                    extensions: scm.extensions,
-                    userRemoteConfigs: [[
-                        url: 'https://github.com/MinAKwhynot/jenkins-argo.git',
-                        credentialsId: 'jenkins-ssh-private1',
-                    ]]
-            ])
-            sshagent(credentials: ['jenkins-ssh-private1']){
-                sh("""
-                    #!/usr/bin/env bash
-                    //set +x
-                    export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no
-		    git config --global user.email "aji7day@gmail.com"
-                    git checkout master
-                    cd env/dev && kustomize edit set image kkimmin/git-test:${BUILD_NUMBER}
-                    git commit -a -m "updated the image tag"
-                    git push
-                """)
-            }
+    stage('Git Push'){
+    steps{
+        script{
+            GIT_CREDS = credentials(<git creds id>)
+            sh '''
+                git add .
+                git commit -m "push to git"
+                git push https://${GIT_CREDS_USR}:${GIT_CREDS_PSW}@bitbucket.org/jenkins-argo.git master
+            '''
         }
     }
-
+}
