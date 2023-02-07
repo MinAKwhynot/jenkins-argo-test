@@ -15,6 +15,7 @@ node {
            withCredentials([sshUserPrivateKey(credentialsId: 'jenkins-ssh-private', keyFileVariable: '', passphraseVariable: 'user', usernameVariable: 'pass')]) {
                sh("""
                    #!/usr/bin/env bash
+									 echo "$(pwd)"
                    cd /home/kevin/LABs/project-test01
 	            	   git config --global user.email "aji7day@gmail.com"
                    git checkout master		 
