@@ -17,8 +17,7 @@ node {
                    #!/usr/bin/env bash
                    cd /home/kevin/LABs/project-test01
 	            	   git config --global user.email "aji7day@gmail.com"
-                   git checkout master
-									 
+                   git checkout master		 
                    cd env/dev && kustomize edit set image kkimmin/git-test:${BUILD_NUMBER}
                    git commit -a -m "updated the image tag"
                    git push
